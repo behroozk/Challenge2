@@ -8,7 +8,7 @@ angular.module('challenge2App')
 			timeoutId = false,
 			// store the default page size and list of available sizes
 			config = {
-				limit: CONFIG.products.pageSizes[CONFIG.products.pageSizes - 1],
+				limit: CONFIG.products.pageSizes[CONFIG.products.pageSizes.length - 1],
 				sizes: CONFIG.products.pageSizes
 			},
 
