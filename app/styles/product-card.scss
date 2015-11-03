@@ -1,0 +1,38 @@
+.product-card {
+	border: 1px solid $lightGrey;
+	border-radius: 3px 3px;
+	color: $black;
+	display: inline-block;
+	height: 200px;
+	margin: 5px;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: top;
+	width: 200px;
+
+	.category {
+		color: $grey;
+		font-size: 11px;
+		margin-bottom: 5px;
+	}
+
+	.brand {
+		color: $darkGrey;
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+
+	.image {
+		height: 100px;
+
+		img {
+			max-height: 100px;
+			max-width: 120px;
+		}
+	}
+
+	&:hover {
+		background-color: $lighterGrey;
+	}
+}

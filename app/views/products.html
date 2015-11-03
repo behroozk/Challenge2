@@ -1,0 +1,38 @@
+<div class="products">
+	<md-input-container>
+	  <label>Search</label>
+	  <input type="text" ng-model="ctrl.search" ng-keyup="ctrl.queueSearch(ctrl.search, 0)">
+	</md-input-container>
+
+	<div>
+		<div layout="row" layout-sm="column" layout-align="space-around" class="loader" ng-show="ctrl.loading">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
+
+		<div class="toolbar" ng-hide="ctrl.totalPages < 1">
+			<div class="total">{{ctrl.totalProducts}} results found.</div>
+
+			<div class="pagination">
+				<span ng-if="ctrl.currentPage !== 1" ng-click="ctrl.changePage(ctrl.currentPage - 1)">«</span>
+				<span ng-if="ctrl.currentPage > 4">…</span>
+				<span ng-if="ctrl.currentPage > 3" ng-click="ctrl.changePage(ctrl.currentPage - 3)">{{ctrl.currentPage - 3}}</span>
+				<span ng-if="ctrl.currentPage > 2" ng-click="ctrl.changePage(ctrl.currentPage - 2)">{{ctrl.currentPage - 2}}</span>
+				<span ng-if="ctrl.currentPage > 1" ng-click="ctrl.changePage(ctrl.currentPage - 1)">{{ctrl.currentPage - 1}}</span>
+				<span class="current">{{ctrl.currentPage}}</span>
+				<span ng-if="ctrl.currentPage < ctrl.totalPages" ng-click="ctrl.changePage(ctrl.currentPage + 1)">{{ctrl.currentPage + 1}}</span>
+				<span ng-if="ctrl.currentPage < ctrl.totalPages - 1" ng-click="ctrl.changePage(ctrl.currentPage + 2)">{{ctrl.currentPage + 2}}</span>
+				<span ng-if="ctrl.currentPage < ctrl.totalPages - 2" ng-click="ctrl.changePage(ctrl.currentPage + 3)">{{ctrl.currentPage + 3}}</span>
+				<span ng-if="ctrl.currentPage < ctrl.totalPages - 3">…</span>
+				<span ng-if="ctrl.currentPage !== ctrl.totalPages" ng-click="ctrl.changePage(ctrl.currentPage + 1)">»</span>
+			</div>
+
+			<div class="page-size">
+				<span ng-repeat="size in ctrl.pageSizes" ng-click="ctrl.changePageSize(size)" ng-class="{'first': $first, 'lastd': $last}">{{size}}</span>
+			</div>
+		</div>
+
+		<div>
+			<product-card ng-repeat="product in ctrl.products" name="product.product.name" image="product.product.thumbnail" link="product.product.specificationSheetUrl" category="product.category.name" brand="product.brand.name"></product-card>
+		</div>
+	</div>
+</div>
