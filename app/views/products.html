@@ -9,10 +9,8 @@
 			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 		</div>
 
-		<div class="toolbar" ng-hide="ctrl.totalPages < 1">
-			<div class="total">{{ctrl.totalProducts}} results found.</div>
-
-			<div class="pagination">
+		<div class="toolbar" ng-hide="ctrl.totalPages < 1" layout-gt-sm="row" layout-sm="column" layout-wrap>
+			<div class="pagination" flex-gt-sm="50">
 				<span ng-if="ctrl.currentPage !== 1" ng-click="ctrl.changePage(ctrl.currentPage - 1)">«</span>
 				<span ng-if="ctrl.currentPage > 4">…</span>
 				<span ng-if="ctrl.currentPage > 3" ng-click="ctrl.changePage(ctrl.currentPage - 3)">{{ctrl.currentPage - 3}}</span>
@@ -26,7 +24,9 @@
 				<span ng-if="ctrl.currentPage !== ctrl.totalPages" ng-click="ctrl.changePage(ctrl.currentPage + 1)">»</span>
 			</div>
 
-			<div class="page-size">
+			<div class="total" flex-gt-sm="25">{{ctrl.totalProducts}} results found.</div>
+
+			<div class="page-size" flex-gt-sm="25">
 				<span ng-repeat="size in ctrl.pageSizes" ng-click="ctrl.changePageSize(size)" ng-class="{'first': $first, 'lastd': $last}">{{size}}</span>
 			</div>
 		</div>
